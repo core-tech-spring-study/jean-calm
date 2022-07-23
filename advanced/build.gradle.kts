@@ -21,6 +21,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("io.github.microutils:kotlin-logging:2.1.21")
 }
 
 tasks.withType<KotlinCompile> {
