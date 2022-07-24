@@ -1,6 +1,5 @@
 package com.kakaopaysec.advanced.log.v3.service
 
-import com.kakaopaysec.advanced.log.trace.TraceId
 import com.kakaopaysec.advanced.log.trace.TraceStatus
 import com.kakaopaysec.advanced.log.trace.logtrace.LogTrace
 import com.kakaopaysec.advanced.log.v3.repository.OrderRepositoryV3
@@ -13,12 +12,12 @@ class OrderServiceV3(
     @Qualifier("threadLocalLogTrace") private val trace: LogTrace
 ) {
 
-    fun orderItem(traceId: TraceId, itemId: String) {
+    fun  orderItem(itemId: String) {
         var status: TraceStatus? = null
 
         try {
             status = trace.begin("OrderServiceV3.orderItem()")
-            orderRepositoryV3.save(status.traceId, itemId)
+            orderRepositoryV3.save(itemId)
             trace.end(status)
         } catch (e: Exception) {
             trace.exception(status!!, e)

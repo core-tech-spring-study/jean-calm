@@ -19,7 +19,7 @@ class OrderApiV3(
 
         try {
             status = trace.begin("OrderApiV3.request()")
-            orderServiceV3.orderItem(status.traceId, itemId)
+            orderServiceV3.orderItem(itemId)
             trace.end(status)
             return "OK"
         } catch (e: Exception) {
