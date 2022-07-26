@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 @Service
 class OrderServiceV5(
     private val orderRepositoryV5: OrderRepositoryV5,
-    @Qualifier("threadLocalLogTrace") private val trace: LogTrace
+    private val trace: LogTrace
 ) {
 
     private val traceTemplate: TraceTemplate = TraceTemplate(trace)

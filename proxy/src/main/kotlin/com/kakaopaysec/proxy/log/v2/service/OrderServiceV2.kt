@@ -6,7 +6,7 @@ import com.kakaopaysec.proxy.log.trace.hellotrace.HelloTraceV2
 import com.kakaopaysec.proxy.log.v2.repository.OrderRepositoryV2
 import org.springframework.stereotype.Service
 
-@Service
+
 class OrderServiceV2(
     private val orderRepositoryV2: OrderRepositoryV2,
     private val trace: HelloTraceV2

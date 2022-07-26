@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 @Repository
 class OrderRepositoryV3(
-    @Qualifier("threadLocalLogTrace") private val trace: LogTrace
+    private val trace: LogTrace
 ) {
 
     fun save(itemId: String) {

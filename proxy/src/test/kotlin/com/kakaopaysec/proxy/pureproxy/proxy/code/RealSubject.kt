@@ -1,14 +1,16 @@
-package com.kakaopaysec.proxy.app.v2.repository
+package com.kakaopaysec.proxy.pureproxy.proxy.code
 
+import mu.KotlinLogging
 import java.util.concurrent.TimeUnit
 
-open class OrderRepositoryV2 {
+private val logger = KotlinLogging.logger {}
 
-    open fun save(itemId: String) {
-        if (itemId == "ex") {
-            throw IllegalStateException("예외 발생!")
-        }
+class RealSubject: Subject {
+
+    override fun operation(): String {
+        logger.info { "실제 객체 호출" }
         sleep(1000)
+        return "data"
     }
 
     private fun sleep(millis: Long) {

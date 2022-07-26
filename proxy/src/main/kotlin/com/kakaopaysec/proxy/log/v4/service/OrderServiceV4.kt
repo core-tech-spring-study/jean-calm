@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 @Service
 class OrderServiceV4(
     private val orderRepositoryV4: OrderRepositoryV4,
-    @Qualifier("threadLocalLogTrace") private val trace: LogTrace
+    private val trace: LogTrace
 ) {
 
     fun orderItem(itemId: String) {

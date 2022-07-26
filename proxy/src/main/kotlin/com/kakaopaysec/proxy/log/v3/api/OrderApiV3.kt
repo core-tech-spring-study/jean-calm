@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class OrderApiV3(
     private val orderServiceV3: OrderServiceV3,
-    @Qualifier("threadLocalLogTrace") private val trace: LogTrace
+    private val trace: LogTrace
 ) {
 
     @GetMapping("/v3/request")

@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.ResponseBody
 // 컴포넌트 스캔시에 자동으로 빈 등록이 됩니다. 수동등록을 위해 @RequestMapping을 사용함.
 @RequestMapping
 @ResponseBody
-class OrderApiV2(
-    private val orderService: OrderServiceV2
+open class OrderApiV2(
+    private val orderService: OrderServiceV2?
 ) {
 
     @GetMapping("/v2/request")
-    fun request(itemId: String): String {
-        orderService.orderItem(itemId)
+    open fun request(itemId: String): String {
+        orderService?.orderItem(itemId)
         return "OK"
     }
 
     @GetMapping("/v2/no-log")
-    fun noLog(): String {
+    open fun noLog(): String {
         return "OK"
     }
 }

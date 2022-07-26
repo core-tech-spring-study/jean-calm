@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class OrderApiV5(
     private val orderServiceV5: OrderServiceV5,
-    @Qualifier("threadLocalLogTrace") private val trace: LogTrace
+    private val trace: LogTrace
 ) {
 
     private val traceTemplate: TraceTemplate = TraceTemplate(trace)

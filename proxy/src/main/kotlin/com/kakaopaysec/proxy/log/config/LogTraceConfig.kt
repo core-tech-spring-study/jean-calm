@@ -8,14 +8,9 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 class LogTraceConfig {
-    
-    @Bean
-    fun fieldLogTrace(): LogTrace {
-        return FieldLogTrace()
-    }
 
     @Bean
-    fun threadLocalLogTrace(): LogTrace {
+    fun trace(): LogTrace {
         return ThreadLocalLogTrace()
     }
 }

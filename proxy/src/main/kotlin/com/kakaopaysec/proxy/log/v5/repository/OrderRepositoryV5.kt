@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 
 @Repository
 class OrderRepositoryV5(
-    @Qualifier("threadLocalLogTrace") private val trace: LogTrace
+    private val trace: LogTrace
 ) {
 
     private val traceTemplate: TraceTemplate = TraceTemplate(trace)
