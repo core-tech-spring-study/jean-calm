@@ -6,6 +6,8 @@ import com.kakaopaysec.proxy.config.v1_proxy.ConcreteProxyConfig
 import com.kakaopaysec.proxy.config.v1_proxy.InterfaceProxyConfig
 import com.kakaopaysec.proxy.config.v2_dynamicproxy.DynamicProxyBasicConfig
 import com.kakaopaysec.proxy.config.v2_dynamicproxy.DynamicProxyFilterConfig
+import com.kakaopaysec.proxy.config.v3_proxyfactory.ProxyFactoryConfigV1
+import com.kakaopaysec.proxy.config.v3_proxyfactory.ProxyFactoryConfigV2
 import com.kakaopaysec.proxy.log.trace.logtrace.LogTrace
 import com.kakaopaysec.proxy.log.trace.logtrace.ThreadLocalLogTrace
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -15,7 +17,9 @@ import org.springframework.context.annotation.Import
 
 //@Import(AppV1Config::class, AppV2Config::class)
 //@Import(InterfaceProxyConfig::class, ConcreteProxyConfig::class)
-@Import(DynamicProxyFilterConfig::class)
+//@Import(DynamicProxyFilterConfig::class)
+//@Import(ProxyFactoryConfigV1::class)
+@Import(ProxyFactoryConfigV2::class)
 @SpringBootApplication(scanBasePackages = ["com.kakaopaysec.proxy.app"])
 class ProxyApplication {
     @Bean
