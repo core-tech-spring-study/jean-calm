@@ -2,7 +2,7 @@ package com.kakaopaysec.proxy.app.v1.repository
 
 import java.util.concurrent.TimeUnit
 
-class OrderRepositoryV1Impl: OrderRepositoryV1 {
+open class OrderRepositoryV1Impl: OrderRepositoryV1 {
 
     override fun save(itemId: String) {
         if (itemId == "ex") {

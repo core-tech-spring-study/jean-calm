@@ -2,7 +2,7 @@ package com.kakaopaysec.proxy.app.v1.service
 
 import com.kakaopaysec.proxy.app.v1.repository.OrderRepositoryV1
 
-class OrderServiceV1Impl(
+open class OrderServiceV1Impl(
     private val orderRepository: OrderRepositoryV1
 ): OrderServiceV1 {
 
