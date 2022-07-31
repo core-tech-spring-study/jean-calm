@@ -10,6 +10,7 @@ import com.kakaopaysec.proxy.config.v3_proxyfactory.ProxyFactoryConfigV1
 import com.kakaopaysec.proxy.config.v3_proxyfactory.ProxyFactoryConfigV2
 import com.kakaopaysec.proxy.config.v4_postprocessor.postprocessor.BeanPostProcessorConfig
 import com.kakaopaysec.proxy.config.v5_autoproxy.AutoProxyConfig
+import com.kakaopaysec.proxy.config.v6_aop.AopConfig
 import com.kakaopaysec.proxy.log.trace.logtrace.LogTrace
 import com.kakaopaysec.proxy.log.trace.logtrace.ThreadLocalLogTrace
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -23,7 +24,8 @@ import org.springframework.context.annotation.Import
 //@Import(ProxyFactoryConfigV1::class)
 //@Import(ProxyFactoryConfigV2::class)
 //@Import(BeanPostProcessorConfig::class)
-@Import(AutoProxyConfig::class)
+//@Import(AutoProxyConfig::class)
+@Import(AopConfig::class)
 @SpringBootApplication(scanBasePackages = ["com.kakaopaysec.proxy.app"])
 class ProxyApplication {
     @Bean
