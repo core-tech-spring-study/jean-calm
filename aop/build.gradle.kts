@@ -4,7 +4,7 @@ plugins {
 	id("org.springframework.boot") version "2.7.2"
 	id("io.spring.dependency-management") version "1.0.12.RELEASE"
 	kotlin("jvm") version "1.6.21"
-	kotlin("plugin.spring") version "1.6.21"
+	kotlin("plugin.spring") version "1.6.21" // 이 플러그인으로 인해서 여러 어노테이션(@Component, @Transactional 포함)이 적용된 class들은 all-open을 해줍니다.
 }
 
 group = "com.kakaopaysec"

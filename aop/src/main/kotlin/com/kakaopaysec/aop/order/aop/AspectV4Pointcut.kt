@@ -14,8 +14,6 @@ class AspectV4Pointcut {
     // 반환 타입은 void여야 합니다.
     // 코드 내용은 비워둡니다.
     // 메서드 이름과 파라미터를 합쳐서 포인트컷 시그니처라고 합니다.
-
-
     @Around("com.kakaopaysec.aop.order.aop.Pointcuts.allOrder()")
     fun doLog(joinPoint: ProceedingJoinPoint): Any? {
         logger.info { "[log] {${joinPoint.signature}}" }
