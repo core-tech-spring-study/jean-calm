@@ -6,12 +6,9 @@ import org.springframework.stereotype.Component
 private val logger = KotlinLogging.logger {}
 
 @Component
-class CallServiceV3(
-    private val internalService: InternalService
-) {
+class InternalService {
 
-    fun external() {
-        logger.info { "call external" }
-        internalService.internal()
+    fun internal() {
+        logger.info { "call internal" }
     }
 }
