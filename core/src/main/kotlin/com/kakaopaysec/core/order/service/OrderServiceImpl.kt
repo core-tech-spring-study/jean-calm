@@ -3,7 +3,9 @@ package com.kakaopaysec.core.order.service
 import com.kakaopaysec.core.discount.DiscountPolicy
 import com.kakaopaysec.core.member.domain.MemberRepository
 import com.kakaopaysec.core.order.domain.Order
+import org.springframework.stereotype.Component
 
+@Component
 class OrderServiceImpl(
     private val memberRepository: MemberRepository,
     private val discountPolicy: DiscountPolicy

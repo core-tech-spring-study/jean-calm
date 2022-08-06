@@ -1,6 +1,9 @@
 package com.kakaopaysec.core.member.domain
 
+import org.springframework.stereotype.Component
 
+
+@Component
 class MemoryMemberRepository: MemberRepository {
 
     override fun save(member: Member) {

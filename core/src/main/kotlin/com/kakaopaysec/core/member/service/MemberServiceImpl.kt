@@ -2,7 +2,9 @@ package com.kakaopaysec.core.member.service
 
 import com.kakaopaysec.core.member.domain.Member
 import com.kakaopaysec.core.member.domain.MemberRepository
+import org.springframework.stereotype.Component
 
+@Component
 class MemberServiceImpl(
     private val memberRepository: MemberRepository
 ): MemberService {
