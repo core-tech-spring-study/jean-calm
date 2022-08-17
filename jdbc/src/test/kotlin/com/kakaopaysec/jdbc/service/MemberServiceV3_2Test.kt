@@ -4,32 +4,33 @@ import com.kakaopaysec.jdbc.connection.password
 import com.kakaopaysec.jdbc.connection.url
 import com.kakaopaysec.jdbc.connection.userName
 import com.kakaopaysec.jdbc.member.domain.Member
-import com.kakaopaysec.jdbc.member.domain.repository.MemberRepositoryV2
+import com.kakaopaysec.jdbc.member.domain.repository.MemberRepositoryV3
 import mu.KotlinLogging
 import org.assertj.core.api.Assertions
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.springframework.jdbc.datasource.DataSourceTransactionManager
 import org.springframework.jdbc.datasource.DriverManagerDataSource
 
 private val logger = KotlinLogging.logger {}
 
-
 /**
- * 트랜잭션 - 커넥션 파라미터 전달 방식 동기화
+ * 트랜잭션 - 트랜잭션 템플릿
  */
-internal class MemberServiceV2Test {
 
-    lateinit var memberRepository: MemberRepositoryV2
-    lateinit var memberService: MemberServiceV2
+internal class MemberServiceV3_2Test {
+
+    lateinit var memberRepository: MemberRepositoryV3
+    lateinit var memberService: MemberServiceV3_2
 
     @BeforeEach
     fun setUp() {
         val dataSource = DriverManagerDataSource(url, userName, password)
-        memberRepository = MemberRepositoryV2(dataSource)
-        memberService = MemberServiceV2(memberRepository, dataSource)
+        memberRepository = MemberRepositoryV3(dataSource)
+        val transactionManager = DataSourceTransactionManager(dataSource)
+        memberService = MemberServiceV3_2(memberRepository, transactionManager)
     }
 
     @AfterEach
@@ -59,8 +60,8 @@ internal class MemberServiceV2Test {
         val findMemberB = memberRepository.findById(memberB.memberId)
 
         // then
-        assertThat(findMemberA.money).isEqualTo(8000)
-        assertThat(findMemberB.money).isEqualTo(12000)
+        Assertions.assertThat(findMemberA.money).isEqualTo(8000)
+        Assertions.assertThat(findMemberB.money).isEqualTo(12000)
     }
 
     @Test
@@ -81,7 +82,7 @@ internal class MemberServiceV2Test {
         val findMemberA = memberRepository.findById(memberA.memberId)
         val findMemberB = memberRepository.findById(memberEx.memberId)
 
-        assertThat(findMemberA.money).isEqualTo(10000)
-        assertThat(findMemberB.money).isEqualTo(10000)
+        Assertions.assertThat(findMemberA.money).isEqualTo(10000)
+        Assertions.assertThat(findMemberB.money).isEqualTo(10000)
     }
 }
