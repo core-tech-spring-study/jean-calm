@@ -5,22 +5,23 @@ import com.kakaopaysec.jdbc.member.domain.Member
 import mu.KotlinLogging
 import org.springframework.jdbc.datasource.DataSourceUtils
 import org.springframework.jdbc.support.JdbcUtils
-import org.springframework.stereotype.Repository
 import java.sql.*
 import javax.sql.DataSource
 
 private val logger = KotlinLogging.logger {}
 
-/**
- * 트랜잭션 - 트랜잭션 매니저
- * DataSourceUtils.getConnection()
- * DataSourceUtils.releaseConnection()
- */
-class MemberRepositoryV3(
-    private val datasource: DataSource
-): MemberRepositoryEx {
 
-    override fun save(member: Member): Member {
+/**
+ * 예외 누수 문제 해결
+ * 체크 예외를 런타임 예외로 변경
+ * MemberRepository 인터페이스 사용
+ *
+ */
+class MemberRepositoryV4_1(
+    private val datasource: DataSource
+) {
+
+     fun save(member: Member): Member {
         val sql = "insert into member(member_id, money) values (?, ?)"
         var conn: Connection? = null
         var pstmt: PreparedStatement? = null
@@ -41,7 +42,7 @@ class MemberRepositoryV3(
         }
     }
 
-    override fun findById(memberId: String): Member {
+     fun findById(memberId: String): Member {
 
         val sql = "select * from member where member_id = ?"
         var conn: Connection? = null
@@ -68,7 +69,7 @@ class MemberRepositoryV3(
         }
     }
 
-    override fun update(memberId: String, money: Int) {
+     fun update(memberId: String, money: Int) {
         val sql = "update member set money = ? where member_id = ?"
         var conn: Connection? = null
         var pstmt: PreparedStatement? = null
@@ -88,7 +89,7 @@ class MemberRepositoryV3(
         }
     }
 
-    override fun delete(memberId: String) {
+     fun delete(memberId: String) {
         val sql = "delete from member where member_id = ?"
         var conn: Connection? = null
         var pstmt: PreparedStatement? = null
