@@ -1,6 +1,7 @@
 package com.kakaopaysec.itemservicedb.item.service
 
 import com.kakaopaysec.itemservicedb.item.domain.entity.Item
+import com.kakaopaysec.itemservicedb.item.domain.model.ItemRes
 import com.kakaopaysec.itemservicedb.item.domain.model.ItemSearchCond
 import com.kakaopaysec.itemservicedb.item.domain.model.ItemUpdateDto
 import com.kakaopaysec.itemservicedb.item.domain.repository.ItemRepository
@@ -21,7 +22,7 @@ class ItemServiceV1(
         return itemRepository.findById(id)
     }
 
-    override fun findAll(cond: ItemSearchCond): List<Item> {
+    override fun findItems(cond: ItemSearchCond): List<ItemRes> {
         return itemRepository.findAll(cond)
     }
 }

@@ -7,14 +7,18 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Profile
 
 @SpringBootApplication
-class ItemserviceDbApplication
+class ItemserviceDbApplication {
+
+	@Profile("local")
+	@Bean
+	fun testDataInit(itemRepository: ItemRepository): TestDataInit {
+		println("bean init")
+		return TestDataInit(itemRepository)
+	}
+}
 
 fun main(args: Array<String>) {
 	runApplication<ItemserviceDbApplication>(*args)
 }
 
-@Bean
-@Profile("local")
-fun testDataInit(itemRepository: ItemRepository): TestDataInit {
-	return TestDataInit(itemRepository)
-}
+
