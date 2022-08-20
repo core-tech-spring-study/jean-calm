@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    username:
+    password:
+  profiles:
+    active: local
+
+# jdbcTemplate sql log
+logging:
+  level:
+    org.springframework.jdbc: debug
+    com.kakaopaysec.item.domain.repository: trace
+    org.hibernate.sql: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    com.kakaopaysec.itemservicedb: debug
+
+# MyBatis
+mybatis:
+  type-aliases-package: com.kakaopaysec.item.domain
+  configuration:
+    map-underscore-to-camel-case: true
+
+# JPA log

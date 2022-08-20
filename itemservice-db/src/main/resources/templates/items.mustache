@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<head>
+    <meta charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>상품 목록</h2>
+    </div>
+
+    <!--
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary float-end"
+                        onclick="location.href='addForm.html'"
+                        th:onclick="|location.href='@{/items/add}'|"
+                        type="button">상품 등록
+                </button>
+            </div>
+        </div>
+    -->
+    <form object="${itemSearch}" method="get" class="form-inline">
+        <div class="row">
+            <div class="col">
+                <input type="text" field="*{itemName}" class="form-control" placeholder="상품명"/>
+            </div>
+            <div class="col">
+                <input type="text" field="*{maxPrice}" class="form-control" placeholder="가격제한"/>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-secondary mb-2">검색</button>
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
+                <div class="col">
+                    <button class="btn btn-primary float-end"
+                            onclick="location.href='addForm.html'"
+                            onclick="|location.href='/items/add}'"
+                            type="button">상품 등록
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>상품명</th>
+                <th>가격</th>
+                <th>수량</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr each="item : ${items}">
+                <td><a href="item.html" href="/items/{itemId}(itemId=${item.id})" text="${item.id}">회원id</a>
+                </td>
+                <td><a href="item.html" href="/items/${item.id}" text="${item.itemName}">상품명</a></td>
+                <td text="${item.price}">10000</td>
+                <td text="${item.quantity}">10</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div> <!-- /container -->
+
+</body>
+</html>
