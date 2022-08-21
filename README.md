@@ -180,7 +180,7 @@ class AToBPostProcessor: BeanPostProcessor {
 위 코드는 스프링 Bean 객체 생성 후 스프링 컨테이너에 저장되기 전에 후킹 기능을 제공해주는 `BeanPostProcessor`를 구현해서 
 실제로 어떻게 프록시를 생성하는지 알 수 있었습니다.
 
-스프링 부트가 기동하면 기본적으로 `AnnotationAwareAspectJAutoProxyCreator`라는 자동 프록시 생성기를 호출하게 되는데, 이 프록시 생성기는 `@Aspect`가 정의된 빈 클래스들을 스프링 컨테이너에서 읽어온 다음에 `Aspect 빌더`에게 요청하여 해당 Aspect 클래스를 `Advisor(포인트컷과 advice를 가지는 객체)로 변환하여 내부 캐시에 저장하게 됩니다.`
+스프링 부트가 기동하면 기본적으로 `AnnotationAwareAspectJAutoProxyCreator`라는 자동 프록시 생성기를 호출하게 되는데, 이 프록시 생성기는 `@Aspect`가 정의된 클래스들을 스프링 컨테이너에서 읽어온 다음에 `Aspect 빌더`에게 요청하여 해당 Aspect 클래스를 `Advisor(포인트컷과 advice를 가지는 객체)로 변환하여 내부 캐시에 저장하게 됩니다.`
 
 그 후에 프록시로 등록하기를 원하는 target 객체를 생성 후 스프링 컨테이너에 저장하기 전에 빈 후처리기에 자동 프록시 생성기가
 advisor의 pointcut을 참조하여 타겟의 메서드 중 하나라도 포인트컷에 매칭되면 해당 프록시를 빈으로 등록하고, 타겟은 프록시가 참조하게 되는 형태로 Spring AOP가 동작하게 됩니다.
