@@ -54,7 +54,7 @@ class ItemWebController(
     fun editForm(@PathVariable itemId: Long, model: Model): String {
         logger.debug { "itemId: $itemId" }
         val item = itemService.findById(itemId) ?: kotlin.run { throw EntityNotFoundException("해당 상품이 존재하지 않습니다. itemId = $itemId") }
-        model.addAttribute("item", item)
+        model.addAttribute("item", itemId)
         return "editForm"
     }
 

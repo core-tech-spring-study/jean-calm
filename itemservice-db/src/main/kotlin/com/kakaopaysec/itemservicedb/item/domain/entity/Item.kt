@@ -1,5 +1,7 @@
 package com.kakaopaysec.itemservicedb.item.domain.entity
 
+import org.apache.ibatis.annotations.ConstructorArgs
+
 class Item private constructor(
     var itemName: String,
     var price: Int,

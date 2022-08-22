@@ -20,17 +20,18 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
+	implementation("com.querydsl:querydsl-jpa:$querydslVersion")
+	kapt("com.querydsl:querydsl-apt:$querydslVersion:jpa")
+	kapt("org.springframework.boot:spring-boot-configuration-processor")
+	implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0")
+	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-mustache")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("io.github.microutils:kotlin-logging:2.1.23")
-	kapt("org.springframework.boot:spring-boot-configuration-processor")
-	implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0")
-	implementation("com.querydsl:querydsl-jpa:$querydslVersion")
-	kapt("com.querydsl:querydsl-apt:$querydslVersion:jpa")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
 	runtimeOnly("com.h2database:h2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

@@ -1,19 +1,19 @@
 spring:
-  datasource:
-    #url: jdbc:h2:tcp://localhost/~/test
-    #username:
-    #password:
   profiles:
-    active: local
+    active: test
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    username:
+    password:
 
 # jdbcTemplate sql log
 logging:
   level:
+    com.kak  aopaysec.item.domain.repository: trace
+    com.kakaopaysec.itemservicedb: debug
     org.springframework.jdbc: debug
-    com.kakaopaysec.item.domain.repository: trace
     org.hibernate.sql: debug
     org.hibernate.type.descriptor.sql.BasicBinder: trace
-    com.kakaopaysec.itemservicedb: debug
 
 # MyBatis
 mybatis:
