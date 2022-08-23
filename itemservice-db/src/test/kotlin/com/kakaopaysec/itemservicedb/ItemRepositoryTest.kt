@@ -9,10 +9,12 @@ import com.kakaopaysec.itemservicedb.item.domain.repository.memory.MemoryItemRep
 import mu.KotlinLogging
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.transaction.annotation.Transactional
+import javax.persistence.EntityManager
 import javax.persistence.EntityNotFoundException
 
 private val logger = KotlinLogging.logger {}
@@ -24,6 +26,15 @@ class ItemRepositoryTest {
     @Autowired
     lateinit var itemRepository: ItemRepository
 
+    @Autowired
+    lateinit var em: EntityManager
+
+    @BeforeEach
+    fun beforeEach() {
+        val createQuery = em.createQuery("select i from Item i where i.itemName = 'ItemTest'")
+        val findItem = createQuery.singleResult as Item
+        em.remove(findItem)
+    }
 
     @AfterEach
     fun afterEach() {

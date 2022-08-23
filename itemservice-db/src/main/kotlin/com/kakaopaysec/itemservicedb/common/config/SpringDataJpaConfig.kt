@@ -1,0 +1,25 @@
+package com.kakaopaysec.itemservicedb.common.config
+
+import com.kakaopaysec.itemservicedb.item.domain.repository.ItemRepository
+import com.kakaopaysec.itemservicedb.item.domain.repository.jpa.JpaItemRepositoryV2
+import com.kakaopaysec.itemservicedb.item.domain.repository.jpa.SpringDataJpaRepository
+import com.kakaopaysec.itemservicedb.item.service.ItemService
+import com.kakaopaysec.itemservicedb.item.service.ItemServiceV1
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+
+@Configuration
+class SpringDataJpaConfig(
+    private val springDataJpaRepository: SpringDataJpaRepository
+) {
+
+    @Bean
+    fun itemService(): ItemService {
+        return ItemServiceV1(itemRepository())
+    }
+
+    @Bean
+    fun itemRepository(): ItemRepository {
+        return JpaItemRepositoryV2(springDataJpaRepository)
+    }
+}
