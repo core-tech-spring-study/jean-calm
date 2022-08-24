@@ -1,7 +1,6 @@
 package com.kakaopaysec.springtx.apply
 
 import mu.KotlinLogging
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.aop.support.AopUtils
