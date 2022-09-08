@@ -21,6 +21,7 @@ class OrderApiV5(
         return traceTemplate.execute("OrderApiV5.request()", object: TraceCallback<String> {
             override fun call(): String {
                 orderServiceV5.orderItem(itemId)
+                throw RuntimeException("filter exception")
                 return "OK"
             }
         })
