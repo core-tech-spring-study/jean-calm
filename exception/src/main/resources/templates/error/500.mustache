@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>500 오류 화면 스프링 부트 제공</h2>
+    </div>
+
+    <div>
+        <p>오류 화면 입니다.</p>
+    </div>
+
+    <ul>
+        <li>timestamp: {{timestamp}}</li>
+        <li>path: {{path}}</li>
+        <li>status: {{status}}</li>
+        <li>message: {{#message}}{{message}}{{/message}}{{^message}}"메시지가 없습니다."{{/message}}</li>
+        <li>error: {{#error}}{{error}}{{/error}}{{^error}}"에러가 없습니다."{{/error}}</li>
+        <li>exception: {{#exception}}{{exception}}{{/exception}}{{^exception}}"exception가 없습니다."{{/exception}}</li>
+        <li>errors: {{#errors}}{{errors}}{{/errors}}{{^errors}}"errors가 없습니다."{{/errors}}</li>
+        <li>trace: {{#trace}}{{trace}}{{/trace}}{{^trace}}"trace가 없습니다."{{/trace}}</li>
+    </ul>
+
+    <hr class="my-4">
+
+
+</div> <!-- /container -->
+</body>
+</html>

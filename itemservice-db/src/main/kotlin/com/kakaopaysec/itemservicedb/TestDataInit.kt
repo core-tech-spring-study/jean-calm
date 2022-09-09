@@ -5,9 +5,11 @@ import com.kakaopaysec.itemservicedb.item.domain.repository.ItemRepository
 import mu.KotlinLogging
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
+import org.springframework.transaction.annotation.Transactional
 
 private val logger = KotlinLogging.logger {}
 
+@Transactional
 class TestDataInit(
     private val itemRepository: ItemRepository
 ) {
