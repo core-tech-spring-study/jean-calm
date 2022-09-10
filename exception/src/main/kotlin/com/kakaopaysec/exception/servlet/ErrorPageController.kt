@@ -1,8 +1,12 @@
 package com.kakaopaysec.exception.servlet
 
 import mu.KotlinLogging
+import org.springframework.http.HttpStatus
+import org.springframework.http.MediaType
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
+import javax.servlet.RequestDispatcher
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
@@ -30,6 +34,20 @@ class ErrorPageController {
         logger.error { "errorPage 500" }
         printErrorInfo(request)
         return "error-page/500"
+    }
+
+    @RequestMapping("/error-page/500", produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun errorPage500Api(request: HttpServletRequest, response: HttpServletResponse): ResponseEntity<Map<String, Any?>> {
+        logger.error { "Api errorPage 500" }
+
+        val result = mutableMapOf<String, Any?>()
+        val ex = request.getAttribute(ERROR_EXCEPTION) as Exception
+        result["status"] = request.getAttribute(ERROR_STATUS_CODE)
+        result["message"] = ex.message
+
+        val statusCode = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE) as Int
+
+        return ResponseEntity(result, HttpStatus.valueOf(statusCode))
     }
 
     fun printErrorInfo(request: HttpServletRequest) {

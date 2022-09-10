@@ -3,3 +3,5 @@ server:
     whitelabel:
       enabled: false
     include-exception: true
+    include-message: always
+
