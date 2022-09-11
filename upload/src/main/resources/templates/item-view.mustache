@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>상품 조회</h2>
+    </div>
+    상품명: <span>{{item.itemName}}</span><br/>
+    첨부파일: <a href="/attach/{{item.id}}">{{item.attachFile.uploadFileName}}</a><br/>
+    {{#item.imageFiles}}
+       <img src="/images/{{storeFileName}}" width="300" height="300">
+    {{/item.imageFiles}}
+
+</div> <!-- /container -->
+</body>
+</html>
